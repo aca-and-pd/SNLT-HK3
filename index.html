@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/home.css">
+
+    <!-- *** THAY ĐỔI Ở ĐÂY: Thêm script của Netlify Identity Widget *** -->
+    <!-- Script này cần được thêm vào HEAD để xử lý các token mời đăng ký -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 </head>
 <body>
 
@@ -28,16 +33,10 @@
     </header>
 
     <main>
-        <!-- 
-          THAY ĐỔI CHÍNH:
-          - Thêm class "container" trực tiếp vào thẻ <section class="hero">.
-          - Xóa thẻ <div class="container hero-container"> không cần thiết ở bên trong.
-        -->
         <section class="hero container">
             <div class="hero-content">
                 <div class="hero-title-wrapper">
                     <h1>THE BLOG</h1>
-                    <!-- Cập nhật icon giống ảnh bạn cung cấp -->
                     <img src="https://cdn-icons-png.flaticon.com/128/16525/16525902.png" alt="Stamp Icon" class="paper-plane-icon">
                 </div>
                 <h2>My Story</h2>
@@ -48,7 +47,6 @@
             </div>
         </section>
 
-        <!-- PHẦN BLOGS -->
         <section class="blog-section">
             <div class="container">
                 <h2 class="section-title">My Blogs</h2>
@@ -73,6 +71,22 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/home.js"></script>
+
+    <!-- 
+      *** THAY ĐỔI Ở ĐÂY: Thêm script khởi tạo Widget ***
+      Đoạn script này sẽ kiểm tra URL, nếu có token mời, nó sẽ mở popup để tạo mật khẩu.
+    -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 
 </body>
 </html>
