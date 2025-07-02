@@ -17,7 +17,7 @@ I bundled up in my warmest coat, a scarf wrapped snugly around my neck, and step
 
 I walked towards the nearby park, now an unrecognizable expanse of white. The trees, usually bare and skeletal in winter, were now adorned with delicate layers of snow, their branches heavy but beautiful.
 
-![A snowy path in the forest](https://images.unsplash.com/photo-1483574983984-72b1a8d294a2?q=80&w=1470)
+![A snowy path in the forest]([https://images.unsplash.com/photo-1483574983984-72b1a8d294a2?q=80&w=1470](https://images.unsplash.com/photo-1453473552141-5eb1510d09e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFJlZCUyMFBhbmRhfGVufDB8fDB8fHww))
 
 *Caption: The path less traveled, now covered in a fresh layer of snow.*
 
