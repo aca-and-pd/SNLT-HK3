@@ -1,0 +1,107 @@
+/* ======================================================
+   HOME.CSS - STYLES FOR HOME PAGE (index.html)
+   ====================================================== */
+
+/* ---- HERO SECTION ---- */
+.hero {
+    min-height: 450px;
+    background: linear-gradient(rgba(9, 13, 31, 0.2), rgba(9, 13, 31, 0.2)),
+                url('https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?q=80&w=1528') no-repeat center center;
+    background-size: cover;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hero-content {
+    background: linear-gradient(90deg, rgba(1, 16, 26, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+    padding: 40px 60px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 550px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-title-wrapper {
+    position: relative;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+.hero-title-wrapper h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.paper-plane-icon {
+    position: absolute;
+    width: 60px;
+    top: -10px;
+    right: -75px;
+    transform: rotate(10deg);
+    opacity: 0.9;
+    transition: transform 0.4s ease;
+}
+
+.hero-title-wrapper:hover .paper-plane-icon {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.hero-description {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* ---- BLOG SECTION (Khoảng cách) ---- */
+.blog-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* ---- PHẦN PHÂN TRANG (NÚT "MORE") ---- */
+#pagination-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.more-button {
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+/* ---- RESPONSIVE CHO HERO SECTION ---- */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        text-align: center;
+        /* Loại bỏ justify-content để nội dung tự căn giữa */
+        justify-content: center;
+    }
+    
+    .hero-content {
+        align-items: center;
+        padding: 30px;
+        background: rgba(1, 16, 26, 0.3);
+    }
+    
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .hero-title-wrapper {
+        align-self: center;
+    }
+}
