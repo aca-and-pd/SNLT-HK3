@@ -1,0 +1,108 @@
+/* ======================================================
+   POST.CSS - STYLES FOR BLOG DETAIL PAGE (post.html)
+   ====================================================== */
+
+main .container {
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+/* 1. KHU VỰC ẢNH BÌA & TIÊU ĐỀ */
+.post-header {
+    position: relative; /* Cần thiết cho lớp phủ */
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    
+    display: flex;
+    align-items: flex-end; /* Căn nội dung xuống dưới */
+    padding: 40px;
+
+    background-color: #1a1f33; /* Màu nền chờ */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Lớp phủ mờ trên ảnh bìa */
+.post-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+    z-index: 1;
+}
+
+/* Nội dung trên lớp phủ (tiêu đề, ngày tháng) */
+.header-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+#post-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+#post-date {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--meta-color);
+}
+
+
+/* 2. KHU VỰC NỘI DUNG CHÍNH */
+.post-body {
+    max-width: 800px; /* Giới hạn chiều rộng cho dễ đọc */
+    margin: 0 auto 80px auto; /* Căn giữa và tạo khoảng cách với phần dưới */
+}
+
+/* 
+  Sử dụng lại class .prose để định dạng nội dung từ Markdown.
+  Các style cho .prose đã có trong editor.css, nhưng chúng ta có thể
+  sao chép chúng vào common.css để dùng chung.
+  Tạm thời, tôi sẽ thêm chúng vào đây để đảm bảo trang này hoạt động.
+*/
+.prose h1, .prose h2, .prose h3 { margin-top: 2rem; margin-bottom: 1rem; line-height: 1.3; font-weight: 700;}
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.75rem; }
+.prose h3 { font-size: 1.25rem; }
+.prose p { margin-bottom: 1rem; font-size: 18px; line-height: 1.8; color: #E0E0E0; }
+.prose ul, .prose ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+.prose li { margin-bottom: 0.5rem; }
+.prose blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 2rem 0; font-style: italic; color: var(--meta-color); }
+.prose code { background-color: #1a1f33; padding: 2px 5px; border-radius: 4px; font-family: 'Courier New', Courier, monospace; }
+.prose pre { background-color: #1a1f33; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 2rem; }
+.prose img { max-width: 100%; border-radius: 8px; margin: 2rem 0; }
+.prose a { color: var(--primary-color); text-decoration: underline; }
+
+
+/* 3. PHẦN BÀI VIẾT LIÊN QUAN */
+.related-posts-section {
+    padding-top: 60px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+    .post-header {
+        height: 350px;
+        padding: 20px;
+    }
+    #post-title {
+        font-size: 32px;
+    }
+    .post-body {
+        padding: 0 10px; /* Thêm padding nhỏ cho mobile */
+    }
+    .prose p {
+        font-size: 16px;
+    }
+}

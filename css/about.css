@@ -1,0 +1,93 @@
+/* ======================================================
+   ABOUT.CSS - STYLES FOR ABOUT PAGE (about.html)
+   ====================================================== */
+
+.about-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* Tiêu đề trang */
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-header .section-title {
+    border-bottom: none; /* Bỏ gạch chân của style chung */
+    margin-bottom: 10px;
+    display: inline-block; /* Để tiêu đề không chiếm full width */
+}
+
+.page-header .subtitle {
+    font-size: 20px;
+    color: var(--meta-color);
+    font-weight: 400;
+}
+
+
+/* Lưới nội dung chính */
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Cột ảnh 1 phần, cột text 2 phần */
+    gap: 60px;
+    align-items: center; /* Căn giữa các item theo chiều dọc */
+}
+
+/* Cột ảnh đại diện */
+.about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    aspect-ratio: 1 / 1.2; /* Giữ tỉ lệ ảnh cao và hẹp */
+}
+
+/* Cột nội dung text */
+.about-text h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+}
+
+.about-text h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 12px;
+}
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #E0E0E0;
+}
+
+/* Responsive cho trang About */
+@media (max-width: 992px) {
+    .about-content-grid {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên tablet */
+        gap: 40px;
+    }
+    
+    .about-image {
+        max-width: 400px; /* Giới hạn chiều rộng ảnh khi về 1 cột */
+        margin: 0 auto; /* Căn giữa ảnh */
+    }
+
+    .about-text {
+        text-align: center; /* Căn giữa text cho hợp với ảnh */
+    }
+
+    .about-text h3 {
+        border-left: none;
+        border-bottom: 2px solid var(--primary-color);
+        padding-left: 0;
+        padding-bottom: 8px;
+        display: inline-block;
+    }
+}
