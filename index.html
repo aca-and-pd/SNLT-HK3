@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBlog - A Personal Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/128/8153/8153004.png" alt="MyBlog Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="editor.html">Editor</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 
+          THAY ĐỔI CHÍNH:
+          - Thêm class "container" trực tiếp vào thẻ <section class="hero">.
+          - Xóa thẻ <div class="container hero-container"> không cần thiết ở bên trong.
+        -->
+        <section class="hero container">
+            <div class="hero-content">
+                <div class="hero-title-wrapper">
+                    <h1>THE BLOG</h1>
+                    <!-- Cập nhật icon giống ảnh bạn cung cấp -->
+                    <img src="https://cdn-icons-png.flaticon.com/128/16525/16525902.png" alt="Stamp Icon" class="paper-plane-icon">
+                </div>
+                <h2>My Story</h2>
+                <p class="hero-description">
+                    Sharing my thoughts, ideas, and journey. One post at a time.
+                </p>
+                <a href="editor.html" class="btn btn-primary">Write a Post</a>
+            </div>
+        </section>
+
+        <!-- PHẦN BLOGS -->
+        <section class="blog-section">
+            <div class="container">
+                <h2 class="section-title">My Blogs</h2>
+                <div id="blog-grid" class="blog-grid">
+                    <!-- JavaScript sẽ chèn bài viết vào đây -->
+                </div>
+                <p id="loading-message" style="text-align: center; font-size: 18px;">Loading posts...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>© 2023</p>
+            <a href="#">Youtube</a>
+            <a href="#">Instagram</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/home.js"></script>
+
+</body>
+</html>

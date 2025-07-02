@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tiêu đề sẽ được cập nhật bởi JavaScript -->
+    <title>Loading Post...</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Liên kết CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/128/8153/8153004.png" alt="MyBlog Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="editor.html">Editor</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Container chính cho toàn bộ nội dung trang -->
+        <div class="container">
+            <!-- ARTICLE: Nơi chứa toàn bộ nội dung bài viết -->
+            <article id="post-container" class="post-container">
+                
+                <!-- 1. KHU VỰC ẢNH BÌA VÀ TIÊU ĐỀ -->
+                <header id="post-header" class="post-header">
+                    <!-- Ảnh bìa sẽ được đặt làm background-image bởi JS -->
+                    <div class="header-content">
+                        <h1 id="post-title"></h1>
+                        <p id="post-date"></p>
+                    </div>
+                </header>
+
+                <!-- 2. KHU VỰC NỘI DUNG CHÍNH -->
+                <section id="post-body" class="post-body prose">
+                    <!-- Nội dung Markdown đã chuyển đổi sẽ được chèn vào đây -->
+                </section>
+
+            </article>
+
+            <!-- 3. PHẦN BÀI VIẾT LIÊN QUAN -->
+            <section class="related-posts-section">
+                <h2 class="section-title">Recent Posts</h2>
+                <div id="related-posts-grid" class="blog-grid">
+                    <!-- 3 thẻ bài viết liên quan sẽ được JS chèn vào đây -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>© 2023</p>
+            <a href="#">Youtube</a>
+            <a href="#">Instagram</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
+
+    <!-- ==================== LIÊN KẾT JAVASCRIPT ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="js/post.js"></script>
+
+</body>
+</html>

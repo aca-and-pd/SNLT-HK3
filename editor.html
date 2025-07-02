@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor - Create New Post</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/128/8153/8153004.png" alt="MyBlog Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="editor.html" class="active">Editor</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container editor-container">
+            <section class="editor-section">
+                <h1 class="section-title">Create a New Post</h1>
+                
+                <form id="editorForm" class="editor-form">
+                    
+                    <!-- 1. KHU VỰC ẢNH BÌA -->
+                    <div id="coverImageWrapper" class="cover-image-wrapper">
+                        <div class="placeholder-text">Click the icon to set a cover image URL</div>
+                        <label for="cover-upload-btn" class="upload-icon" title="Set Cover Image URL">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1092/1092928.png" alt="Upload Icon">
+                        </label>
+                        <button type="button" id="cover-upload-btn" class="hidden"></button>
+                    </div>
+
+                    <!-- 2. LAYOUT 2 CỘT: VIẾT & XEM TRƯỚC -->
+                    <div class="editor-layout">
+                        <!-- Cột viết Markdown -->
+                        <div class="writing-pane">
+                            <textarea id="markdownContent" placeholder="Your post title on the first line...
+Then start writing your content using Markdown."></textarea>
+                        </div>
+                        <!-- Cột xem trước HTML -->
+                        <div class="preview-pane">
+                            <div id="htmlPreview" class="prose"></div>
+                        </div>
+                    </div>
+
+                    <!-- 3. CÁC NÚT HÀNH ĐỘNG -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-outline">Publish (Download .md)</button>
+                        <button type="button" id="uploadImgBtn" class="btn btn-outline">Upload IMG</button>
+                    </div>
+
+                </form>
+            </section>
+            
+            <!-- 4. PHẦN BÀI VIẾT GẦN ĐÂY -->
+            <section class="recent-posts-section">
+                <h2 class="section-title">Recent Posts</h2>
+                <div id="recentPostContainer">
+                    <!-- Thẻ bài viết gần nhất sẽ được JavaScript chèn vào đây -->
+                </div>
+                <p id="loadingRecentPost" style="text-align: center; display: none;">Loading recent post...</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>© 2023</p>
+            <a href="#">Youtube</a>
+            <a href="#">Instagram</a>
+            <a href="#">Email</a>
+        </div>
+    </footer>
+
+    <!-- ==================== LIÊN KẾT FILE JAVASCRIPT ==================== -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="js/editor.js"></script>
+
+</body>
+</html>
