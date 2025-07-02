@@ -1,12 +1,13 @@
 /**
  * post.js - Logic cho trang chi tiết bài viết (post.html)
  *
+ * --- PHIÊN BẢN NÂNG CẤP ---
  * Chức năng:
  * 1. Lấy 'slug' của bài viết từ URL query parameter.
  * 2. Tải file .md tương ứng.
  * 3. Phân tích Front Matter và nội dung Markdown.
  * 4. Hiển thị nội dung lên trang.
- * 5. Tải và hiển thị các bài viết liên quan.
+ * 5. Tải danh sách bài viết từ GitHub API để hiển thị các bài viết liên quan.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,18 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- MAIN LOGIC ---
 
-    /**
-     * Lấy 'slug' bài viết từ URL.
-     * Ví dụ: "post.html?post=my-first-post" -> trả về "my-first-post"
-     */
     function getPostSlugFromURL() {
         const params = new URLSearchParams(window.location.search);
         return params.get('post');
     }
 
-    /**
-     * Hàm chính để tải và hiển thị bài viết.
-     */
     async function loadPost() {
         const slug = getPostSlugFromURL();
 
@@ -46,19 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const markdown = await response.text();
             
-            // Phân tích Front Matter và nội dung
             const { attributes, body } = parseFrontMatterAndBody(markdown);
 
-            // Cập nhật giao diện với dữ liệu đã lấy được
-            document.title = attributes.title; // Cập nhật tiêu đề tab trình duyệt
+            document.title = attributes.title;
             postHeader.style.backgroundImage = `url(${attributes.cover_image})`;
             postTitle.textContent = attributes.title;
             postDate.textContent = `Published on: ${new Date(attributes.date).toLocaleDateString('en-GB')}`;
-            
-            // Chuyển đổi nội dung Markdown sang HTML và hiển thị
             postBody.innerHTML = marked.parse(body);
             
-            // Tải các bài viết liên quan
+            // Tải các bài viết liên quan sau khi đã hiển thị bài chính
             loadRelatedPosts(slug);
 
         } catch (error) {
@@ -72,11 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function loadRelatedPosts(currentSlug) {
         try {
-            const response = await fetch('posts/posts.json');
-            if (!response.ok) return;
+            // =================================================================
+            // *** THAY ĐỔI CỐT LÕI BẮT ĐẦU TỪ ĐÂY ***
+            const GITHUB_USERNAME = 'aca-and-pd';
+            const GITHUB_REPO = 'SNLT-HK3';
+            const repoURL = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/posts`;
 
-            let postFiles = await response.json();
-            
+            const response = await fetch(repoURL);
+            if (!response.ok) return; // Không hiển thị bài liên quan nếu API lỗi
+
+            const contents = await response.json();
+            const postFiles = contents
+                .filter(item => item.type === 'file' && item.name.endsWith('.md'))
+                .map(item => item.name);
+            // *** KẾT THÚC THAY ĐỔI CỐT LÕI ***
+            // =================================================================
+
             // Lọc ra bài viết hiện tại và chỉ lấy 3 bài viết khác
             const relatedPostFiles = postFiles
                 .filter(file => file !== `${currentSlug}.md`)
@@ -86,19 +87,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const postsData = await Promise.all(
                 relatedPostFiles.map(async file => {
-                    const postResponse = await fetch(`posts/${file}`);
-                    if (!postResponse.ok) return null;
-                    const markdown = await postResponse.text();
-                    const { attributes } = parseFrontMatterAndBody(markdown);
-                    return {
-                        ...attributes,
-                        slug: file.replace('.md', '')
-                    };
+                    try {
+                        const postResponse = await fetch(`posts/${file}`);
+                        if (!postResponse.ok) return null;
+                        const markdown = await postResponse.text();
+                        // Chỉ cần Front Matter cho card
+                        const { attributes } = parseFrontMatterAndBody(markdown);
+                        return {
+                            ...attributes,
+                            slug: file.replace('.md', '')
+                        };
+                    } catch (e) {
+                        return null; // Bỏ qua nếu có lỗi
+                    }
                 })
             );
             
             const validPosts = postsData.filter(p => p);
-            relatedPostsGrid.innerHTML = validPosts.map(createBlogCardHTML).join('');
+            if (relatedPostsGrid) {
+                relatedPostsGrid.innerHTML = validPosts.map(createBlogCardHTML).join('');
+            }
 
         } catch (error) {
             console.error('Error loading related posts:', error);
@@ -110,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function parseFrontMatterAndBody(markdown) {
         const match = /---\n([\s\S]+?)\n---/.exec(markdown);
-        const frontMatter = match ? match[1] : '';
+        // Trả về object rỗng nếu không có Front Matter
+        const attributes = match ? jsyaml.load(match[1]) : {};
         const body = match ? markdown.slice(match[0].length) : markdown;
         
-        const attributes = jsyaml.load(frontMatter);
         return { attributes, body };
     }
 
@@ -122,13 +130,17 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function createBlogCardHTML(post) {
         const postUrl = `post.html?post=${post.slug}`;
+        const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        });
+        
         return `
             <article class="blog-card">
                 <a href="${postUrl}" class="blog-card-image-link">
                     <img src="${post.cover_image}" alt="Cover for ${post.title}">
                 </a>
                 <div class="blog-card-content">
-                    <p class="blog-date">${new Date(post.date).toLocaleDateString()}</p>
+                    <p class="blog-date">${formattedDate}</p>
                     <h3><a href="${postUrl}">${post.title}</a></h3>
                     <p class="blog-excerpt">${post.excerpt}</p>
                     <a href="${postUrl}" class="btn btn-secondary">Read</a>
