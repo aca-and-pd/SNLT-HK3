@@ -1,1 +1,1 @@
- Thư mục CMS sẽ lưu ảnh tải lên (theo config.yml)
+Thư mục chứa các hình ảnh tĩnh của giao diện (nếu có)
