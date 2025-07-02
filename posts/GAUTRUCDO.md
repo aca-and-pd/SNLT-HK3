@@ -1,5 +1,5 @@
 ---
-title: "---"
+title: "LOÀI GẤU TRÚC ĐỎ"
 date: "2025-07-02"
 cover_image: "https://images.unsplash.com/photo-1634755394904-2e9e6372c4af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fFJlZCUyMFBhbmRhfGVufDB8fDB8fHww"
 excerpt: "title: "Dưới đây là bài viết ngắn về gấu trúc đỏ (red panda) bằng tiếng Việt, sử dụng Markdown và chèn các ảnh minh họa với URL từ các nguồn công khai..."
