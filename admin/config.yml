@@ -1,10 +1,9 @@
 # "backend" chỉ định cách CMS kết nối với kho mã nguồn của bạn.
 backend:
-  name: github # Sử dụng GitHub làm backend
-  # THAY ĐỔI DÒNG DƯỚI ĐÂY!
-  # Thay "your-username/your-repo-name" bằng tên người dùng và tên repo của bạn.
+  name: github # <-- Thay đổi thành 'github'
+  # THAY ĐỔI DÒNG DƯỚI ĐÂY cho đúng với repo của bạn
   repo: "aca-and-pd/SNLT-HK3" 
-  branch: main # Làm việc trên nhánh 'main'
+  branch: main
 
 # Cấu hình nơi lưu trữ các file media (ảnh, video...)
 media_folder: "images/uploads" # Thư mục trong repo nơi các file ảnh được lưu
