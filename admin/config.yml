@@ -1,8 +1,6 @@
 # "backend" chỉ định cách CMS kết nối với kho mã nguồn của bạn.
 backend:
-  name: github
-  # Dòng này phải khớp chính xác với repo của bạn
-  repo: "aca-and-pd/SNLT-HK3"
+  name: git-gateway
   branch: main
 
 # Cấu hình nơi lưu trữ các file media (ảnh, video...)
