@@ -3,7 +3,7 @@ backend:
   name: github # Sử dụng GitHub làm backend
   # THAY ĐỔI DÒNG DƯỚI ĐÂY!
   # Thay "your-username/your-repo-name" bằng tên người dùng và tên repo của bạn.
-  repo: "your-username/my-personal-blog" 
+  repo: "aca-and-pd/SNLT-HK3" 
   branch: main # Làm việc trên nhánh 'main'
 
 # Cấu hình nơi lưu trữ các file media (ảnh, video...)
